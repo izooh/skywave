@@ -17,7 +17,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-image:url('../app/images/lk.jpg');
+                 background-size: 1600px 800px;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -68,14 +69,38 @@
             }
         </style>
         <meta name="csrf-token" content="{{csrf_token()}}">
-<script>window.Laravel={csrfToken:'{{csrf_token()}}'}</script>
+  <script>window.Laravel={csrfToken:'{{csrf_token()}}'}</script>
+
     </head>
     <body>
+      <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><strong>NG'OROBOI</strong></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+
+        @if(auth()->check())
+        Welcome {{auth()->user()->name}}
+
+          @else
+            <li><a data-toggle="modal" data-target="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+
+          @endif
+        </ul>
+      </div>
+    </nav>
+
       <div id="app">
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Login
-</button>
 
 <vue-login></vue-login>
 </div>

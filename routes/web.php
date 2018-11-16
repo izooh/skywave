@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('landing');
 });
+Route::post('/test','testController@login');
 
 Auth::routes();
 
