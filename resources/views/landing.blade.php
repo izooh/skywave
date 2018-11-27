@@ -90,7 +90,7 @@
         Welcome {{auth()->user()->name}}
 
           @else
-            <li><a data-toggle="modal" data-target="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="{{url("/reg_page")}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
 

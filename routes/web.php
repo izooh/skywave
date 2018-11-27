@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/reg_page', function () {
+    return view('register');
+});
+
 Route::get('/', function () {
     return view('landing');
 });

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
+use app\User;
 use App\Http\Controllers\Controller;
 use App\Exceptions\AuthFailedException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\User;
+
 
 class LoginController extends Controller
 {
