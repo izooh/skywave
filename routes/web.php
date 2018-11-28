@@ -23,3 +23,7 @@ Route::post('/test','testController@login');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('admin')->group(function(){
+  Route::resource('series','SeriesController');
+});
