@@ -98,6 +98,11 @@
         </ul>
       </div>
     </nav>
+    @if(auth()->check())
+    <p>admin create series</p>
+
+    @endif
+
 
       <div id="app">
         <!-- Button trigger modal -->

@@ -84,6 +84,6 @@ class RegisterController extends Controller
         //what happens afer registration
         //Mail::to($user)->send(new ConfirmYourEmail());
         //return redirect($this->redirectPath('/login'));
-      return 'welcome';
+      return view('landing');
     }
 }

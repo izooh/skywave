@@ -98,9 +98,9 @@ input::-webkit-input-placeholder {
 
     </style>
 	</head>
-	<body>
-  </head>
+
   <body>
+
     <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -127,8 +127,13 @@ input::-webkit-input-placeholder {
     </div>
   </nav>
 
+
 		<div class="container">
+      
+
+
 			<div class="row main">
+
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
 	               		<h1 class="title">NG'OROBOI</h1>
@@ -183,3 +188,8 @@ input::-webkit-input-placeholder {
 				</div>
 			</div>
 		</div>
+
+
+      <script src="{{asset('js/app.js') }}"></script>
+  </body>
+  </html>
