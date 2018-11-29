@@ -36,13 +36,11 @@ class SeriesController extends Controller
      */
     public function store(CreateSeriesRequest $request)
     {
+      //uploading and storing a series
         $request->uploadSeriesImage()
                  ->storeSeries();
 
-
-
-
-        //redirecting the user back
+     //redirecting the user back
         return redirect()->back();
 
     }
