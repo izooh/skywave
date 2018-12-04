@@ -47451,8 +47451,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47485,9 +47483,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         location.reload();
       }).catch(function (error) {
         if (error.response.status == 422) {
-          _this.errors.push('Sorry We have never seen you before re-check your details');
+          _this.errors.push('Invalid email or Password! try again');
         } else {
-          _this.errors.push('OOps! please refresh the page ninja');
+          _this.errors.push('Oops! please refresh the page ninja');
         }
       });
     }
@@ -47512,316 +47510,290 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        attrs: {
-          id: "exampleModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
-        }
+        attrs: { id: "exampleModal", role: "dialog" }
       },
       [
-        _c("div", {
-          staticClass: "modal hide",
-          attrs: {
-            id: "idModal",
-            "data-backdrop": "static",
-            "data-keyboard": "false"
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "container" }, [
-                  _c("div", { staticClass: "card card-container" }, [
-                    _c(
-                      "form",
-                      {
-                        staticClass: "form-horizontal",
-                        attrs: { role: "form" },
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            _vm.loginAttempt()
-                          }
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "card card-container" }, [
+                  _c(
+                    "form",
+                    {
+                      staticClass: "form-horizontal",
+                      attrs: { role: "form" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          _vm.loginAttempt()
                         }
-                      },
-                      [
-                        _vm._m(1),
+                      }
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-3" }),
                         _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-3" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-md-6" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "form-group has-danger" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "sr-only",
+                                attrs: { for: "email" }
+                              },
+                              [_vm._v("E-Mail Address")]
+                            ),
+                            _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "form-group has-danger" },
+                              {
+                                staticClass: "input-group mb-2 mr-sm-2 mb-sm-0"
+                              },
+                              [
+                                _vm._m(2),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.email,
+                                      expression: "email"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    name: "email",
+                                    id: "email",
+                                    placeholder: "you@example.com",
+                                    required: "",
+                                    autofocus: ""
+                                  },
+                                  domProps: { value: _vm.email },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.email = $event.target.value
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(3)
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-3" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "sr-only",
+                                attrs: { for: "password" }
+                              },
+                              [_vm._v("Password")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "input-group mb-2 mr-sm-2 mb-sm-0"
+                              },
+                              [
+                                _vm._m(4),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.password,
+                                      expression: "password"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "password",
+                                    name: "password",
+                                    id: "password",
+                                    placeholder: "Password",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.password },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.password = $event.target.value
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(5)
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-3" }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-md-6",
+                            staticStyle: { "padding-top": ".35rem" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-check mb-2 mr-sm-2 mb-sm-0"
+                              },
                               [
                                 _c(
                                   "label",
-                                  {
-                                    staticClass: "sr-only",
-                                    attrs: { for: "email" }
-                                  },
-                                  [_vm._v("E-Mail Address")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "input-group mb-2 mr-sm-2 mb-sm-0"
-                                  },
+                                  { staticClass: "form-check-label" },
                                   [
-                                    _vm._m(2),
-                                    _vm._v(" "),
                                     _c("input", {
                                       directives: [
                                         {
                                           name: "model",
                                           rawName: "v-model",
-                                          value: _vm.email,
-                                          expression: "email"
+                                          value: _vm.remember,
+                                          expression: "remember"
                                         }
                                       ],
-                                      staticClass: "form-control",
+                                      staticClass: "form-check-input",
                                       attrs: {
-                                        type: "text",
-                                        name: "email",
-                                        id: "email",
-                                        placeholder: "you@example.com",
-                                        required: "",
-                                        autofocus: ""
+                                        name: "remember",
+                                        type: "checkbox"
                                       },
-                                      domProps: { value: _vm.email },
+                                      domProps: {
+                                        checked: Array.isArray(_vm.remember)
+                                          ? _vm._i(_vm.remember, null) > -1
+                                          : _vm.remember
+                                      },
                                       on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
+                                        change: function($event) {
+                                          var $$a = _vm.remember,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.remember = $$a.concat([
+                                                  $$v
+                                                ]))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.remember = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.remember = $$c
                                           }
-                                          _vm.email = $event.target.value
                                         }
                                       }
-                                    })
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticStyle: {
+                                          "padding-bottom": ".15rem"
+                                        }
+                                      },
+                                      [_vm._v("Remember me")]
+                                    )
                                   ]
                                 )
                               ]
                             )
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(3)
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "row",
+                          staticStyle: { "padding-top": "1rem" }
+                        },
+                        [
                           _c("div", { staticClass: "col-md-3" }),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-6" }, [
-                            _c("div", { staticClass: "form-group" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "sr-only",
-                                  attrs: { for: "password" }
-                                },
-                                [_vm._v("Password")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "input-group mb-2 mr-sm-2 mb-sm-0"
-                                },
-                                [
-                                  _vm._m(4),
-                                  _vm._v(" "),
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.password,
-                                        expression: "password"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    attrs: {
-                                      type: "password",
-                                      name: "password",
-                                      id: "password",
-                                      placeholder: "Password",
-                                      required: ""
-                                    },
-                                    domProps: { value: _vm.password },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.password = $event.target.value
-                                      }
-                                    }
-                                  })
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(5)
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-3" }),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "col-md-6",
-                              staticStyle: { "padding-top": ".35rem" }
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "form-check mb-2 mr-sm-2 mb-sm-0"
-                                },
-                                [
-                                  _c(
-                                    "label",
-                                    { staticClass: "form-check-label" },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.remember,
-                                            expression: "remember"
-                                          }
-                                        ],
-                                        staticClass: "form-check-input",
-                                        attrs: {
-                                          name: "remember",
-                                          type: "checkbox"
-                                        },
-                                        domProps: {
-                                          checked: Array.isArray(_vm.remember)
-                                            ? _vm._i(_vm.remember, null) > -1
-                                            : _vm.remember
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            var $$a = _vm.remember,
-                                              $$el = $event.target,
-                                              $$c = $$el.checked ? true : false
-                                            if (Array.isArray($$a)) {
-                                              var $$v = null,
-                                                $$i = _vm._i($$a, $$v)
-                                              if ($$el.checked) {
-                                                $$i < 0 &&
-                                                  (_vm.remember = $$a.concat([
-                                                    $$v
-                                                  ]))
-                                              } else {
-                                                $$i > -1 &&
-                                                  (_vm.remember = $$a
-                                                    .slice(0, $$i)
-                                                    .concat($$a.slice($$i + 1)))
-                                              }
-                                            } else {
-                                              _vm.remember = $$c
-                                            }
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticStyle: {
-                                            "padding-bottom": ".15rem"
-                                          }
-                                        },
-                                        [_vm._v("Remember me")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "row",
-                            staticStyle: { "padding-top": "1rem" }
-                          },
-                          [
-                            _c("div", { staticClass: "col-md-3" }),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: {
+                                  type: "submit",
+                                  disabled: !_vm.isValidLoginForm
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "fa fa-sign-in" }),
+                                _vm._v(" Login")
+                              ]
+                            ),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-md-6" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success",
-                                  attrs: {
-                                    type: "submit",
-                                    disabled: !_vm.isValidLoginForm
-                                  }
-                                },
-                                [
-                                  _c("i", { staticClass: "fa fa-sign-in" }),
-                                  _vm._v(" Login")
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "btn btn-link",
-                                  attrs: { href: "/password/reset" }
-                                },
-                                [_vm._v("Forgot Your Password?")]
-                              )
-                            ])
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v("\n        ...\n      ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _vm.errors.length > 0
-                  ? _c(
-                      "ul",
-                      { staticClass: "list-group alert alert-danger" },
-                      _vm._l(_vm.errors, function(error) {
-                        return _c(
-                          "li",
-                          {
-                            key: _vm.errors.indexOf(error),
-                            staticClass: "list-group-item"
-                          },
-                          [_vm._v("\n       " + _vm._s(error) + "\n       ")]
-                        )
-                      })
-                    )
-                  : _vm._e()
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-link",
+                                attrs: { href: "/password/reset" }
+                              },
+                              [_vm._v("Forgot Your Password?")]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ])
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _vm.errors.length > 0
+                ? _c(
+                    "ul",
+                    { staticClass: "list-group alert alert-danger" },
+                    _vm._l(_vm.errors, function(error) {
+                      return _c(
+                        "li",
+                        {
+                          key: _vm.errors.indexOf(error),
+                          staticClass: "list-group-item"
+                        },
+                        [_vm._v("\n         " + _vm._s(error) + "\n         ")]
+                      )
+                    })
+                  )
+                : _vm._e()
             ])
-          ]
-        )
+          ])
+        ])
       ]
     )
   ])
@@ -47831,34 +47803,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("strong", [
-        _c(
-          "h5",
-          {
-            staticClass: "modal-title text-primary",
-            attrs: { id: "exampleModalLabel" }
-          },
-          [
-            _vm._v(
-              "We sell AK-47,Ruger 10/22 Rifle,Carbon 15 M4,Arms AR-7,Ceska,Glock 17...get strapped now"
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
+    return _c("div", { staticClass: "modal-header login-header" }, [
       _c(
         "button",
         {
           staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
+          attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Please Login")])
     ])
   },
   function() {
@@ -47869,7 +47824,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-md-3" }),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6" }, [
-        _c("h2", [_vm._v("Please Login")])
+        _c("h4", [_vm._v("Input Your Credetials")])
       ])
     ])
   },
@@ -47880,7 +47835,7 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticClass: "input-group-addon", staticStyle: { width: "2.6rem" } },
-      [_c("i", { staticClass: "fa fa-at" })]
+      [_c("i", { staticClass: "fa fa-envelope" })]
     )
   },
   function() {
@@ -47891,7 +47846,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "form-control-feedback" }, [
         _c("span", { staticClass: "text-danger align-middle" }, [
           _c("i", { staticClass: "fa fa-close" }),
-          _vm._v(" Example error message\n                              ")
+          _vm._v(" Example error message\n                                  ")
         ])
       ])
     ])

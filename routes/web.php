@@ -27,3 +27,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('admin')->prefix('admin')->group(function(){
   Route::resource('series','SeriesController');
 });
+Route::prefix('debtor')->group(function(){
+  Route::resource('debtors','DebtorController');
+});

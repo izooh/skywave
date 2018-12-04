@@ -25,6 +25,9 @@
       </script>
         <!-- Styles -->
         <style>
+        table { border-collapse: collapse; }
+        tr { display: block; float: left; }
+        th, td { display: block; border: 1px solid black; }
             html, body {
                 background-image:url('../app/images/lk.jpg');
                  background-size: 1600px 800px;
@@ -778,6 +781,7 @@ header {
     width: 100%;
 }
 }
+
         </style>
         <meta name="csrf-token" content="{{csrf_token()}}">
   <script>window.Laravel={csrfToken:'{{csrf_token()}}'}</script>
@@ -825,8 +829,8 @@ header {
                     </div>
                     <div class="navi">
                         <ul>
-                            <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                            <li><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
+                            <li ><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                            <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
                               <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agent Summary</span></a></li>
                             <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
                             <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendar</span></a></li>
@@ -849,14 +853,12 @@ header {
                                         </button>
                                     </div>
                                 </nav>
-                                <div class="search hidden-xs hidden-sm">
-                                    <input type="text" placeholder="Search" id="search">
-                                </div>
+
                             </div>
                             <div class="col-md-5">
                                 <div class="header-rightside">
                                     <ul class="list-inline header-top pull-right">
-                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Suggestion Box</a></li>
+                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Update Call Info+</a></li>
                                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                                         <li>
                                             <a href="#" class="icon-info">
@@ -887,28 +889,59 @@ header {
                         </header>
                     </div>
                     <div class="user-dashboard">
-                        <h1>Hello, ngoroboi</h1>
+                        <h1>Debtors Infotmation</h1>
                         <div class="row">
-                          <div class="col-md-12 col-sm-12 col-xs-12 gutter">
-                              <h1>component rendering goes here</h1>
+                          <div class="col-md-6 col-sm-12 col-xs-12 gutter">
+                            <table class="table table-striped table-dark">
+                                    <tr>
+                                        <th> Full Name</th>
+                                        <th> Id Number</th>
+                                        <th> Phone Number </th>
+                                        <th> email </th>
+                                        <th> Outsourced Amount</th>
+                                        <th>Loan Taken Date </th>
+                                        <th>Loan Due Date </th>
+                                    </tr>
+
+                                     @foreach($Debtor as $D)
+                                      <tr>
+                                          <td> {{$D->FullName}} </td>
+                                          <td> {{$D->IdentityNo}} </td>
+                                          <td> {{$D->MobilePhone}} </td>
+                                          <td> {{$D->Email}} </td>
+                                          <td> {{$D->default}} </td>
+                                          <td> {{$D->OriginationDate}} </td>
+                                          <td> {{$D->DueDate}} </td>
+                                      </tr>
+                                     @endforeach
+
+                            </table>
+                            <br>
+                            <br>
+
                           </div>
                             <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                              <h1>Payment Record</h1>
 
-                                <div class="sales">
-                                    <h2>Your Sale</h2>
+                              <table class="table table-striped table-dark">
+                                      <tr>
+                                          <th> Payment Date</th>
+                                          <th> LastPayment</th>
+                                          <th> Current Balance </th>
 
-                                    <div class="btn-group">
-                                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span>Period:</span> Last Year
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a href="#">2012</a>
-                                            <a href="#">2014</a>
-                                            <a href="#">2015</a>
-                                            <a href="#">2016</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                      </tr>
+                              @foreach($Debtor as $D)
+                                  @foreach($D->payment as $P)
+                                    <tr>
+                                      <td>{{$P->LastPaymentDate}}</td>
+                                      <td>{{$P->LastPaymentAmount}}</td>
+                                      <td>{{$P->currentBalance}}</td>
+
+                                      </tr>
+
+                                  @endforeach
+                              @endforeach
+                              </table>
                             </div>
                             <div class="col-md-7 col-sm-7 col-xs-12 gutter">
 
