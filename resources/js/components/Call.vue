@@ -14,6 +14,7 @@
           <form>
           <div class="form-group">
     <select  class="form-control" v-model="selectbox1">
+    <option value="">....</option>
         <option value="Right Party Contact">Right Party Contact</option>
         <option value="Third Party Contact">Third Party Contact</option>
         <option value="Temporary Not Contacted">Temporary Not Contacted</option>
@@ -26,6 +27,14 @@
     </select>
     </div>
     <br><br>
+    <div class="form-group">
+<select  class="form-control">
+  <option value="">....</option>
+  <option value="Lost Job">Lost Job</option>
+  <option value="Low Funds">Low Funds</option>
+  <option value="Debtor Sick">Debtor Sick</option>
+</select>
+</div>
     <div class="form-group">
     <input type="text" class="form-control" id="PTP amount"  placeholder="PTP Amount">
 
@@ -61,11 +70,11 @@ computed: {
        var options = [{val: 'Promise to Pay', text: 'Promise To pay'},
                       {val: 'Negotiation in progress', text: 'Negotiation in progress'},
                       {val: 'Non commital', text: 'Non commital'}]
-    } else if (this.selectbox1 === 'drink'){
-       var options = [{val: 'beer', text: 'Beer'},
-                      {val: 'wine', text: 'Wine'},
-                      {val: 'coke', text: 'Coke'},
-                      {val: 'water', text: 'Water'}]
+    } else if (this.selectbox1 === 'Third Party Contact'){
+       var options = [{val: 'Debtor Not Around', text: 'Debtor Not Around'},
+                      {val: 'Debtor Dead', text: 'Debtor Dead'},
+                      {val: 'Commited', text: 'Commited'},
+                      ]
     } else if (this.selectbox1 === 'desert'){
        var options = [{val: 'tiramisu', text: 'Tiramisu'},
                       {val: 'icecream', text: 'Icecream'},

@@ -47983,6 +47983,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47997,8 +48006,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     setOptions: function setOptions() {
       if (this.selectbox1 === 'Right Party Contact') {
         var options = [{ val: 'Promise to Pay', text: 'Promise To pay' }, { val: 'Negotiation in progress', text: 'Negotiation in progress' }, { val: 'Non commital', text: 'Non commital' }];
-      } else if (this.selectbox1 === 'drink') {
-        var options = [{ val: 'beer', text: 'Beer' }, { val: 'wine', text: 'Wine' }, { val: 'coke', text: 'Coke' }, { val: 'water', text: 'Water' }];
+      } else if (this.selectbox1 === 'Third Party Contact') {
+        var options = [{ val: 'Debtor Not Around', text: 'Debtor Not Around' }, { val: 'Debtor Dead', text: 'Debtor Dead' }, { val: 'Commited', text: 'Commited' }];
       } else if (this.selectbox1 === 'desert') {
         var options = [{ val: 'tiramisu', text: 'Tiramisu' }, { val: 'icecream', text: 'Icecream' }, { val: 'espresso', text: 'Espresso' }];
       }
@@ -48056,6 +48065,8 @@ var render = function() {
                       }
                     },
                     [
+                      _c("option", { attrs: { value: "" } }, [_vm._v("....")]),
+                      _vm._v(" "),
                       _c(
                         "option",
                         { attrs: { value: "Right Party Contact" } },
@@ -48121,6 +48132,8 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(1),
                 _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
                 _c("span", [
                   _vm._v(
                     "selected: " +
@@ -48132,7 +48145,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(2)
+            _vm._m(3)
           ])
         ])
       ]
@@ -48156,6 +48169,24 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [
         _vm._v("Update call Information")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("select", { staticClass: "form-control" }, [
+        _c("option", { attrs: { value: "" } }, [_vm._v("....")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Lost Job" } }, [_vm._v("Lost Job")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Low Funds" } }, [_vm._v("Low Funds")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Debtor Sick" } }, [
+          _vm._v("Debtor Sick")
+        ])
       ])
     ])
   },

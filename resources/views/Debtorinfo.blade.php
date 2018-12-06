@@ -859,7 +859,7 @@ header {
                             <div class="col-md-5">
                                 <div class="header-rightside">
                                     <ul class="list-inline header-top pull-right">
-                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#callModal">Update Call Info+</a></li>
+                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#callModal">Update Call Info</a></li>
                                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                                         <li>
                                             <a href="#" class="icon-info">
@@ -971,23 +971,6 @@ header {
 
 
         <!-- Modal -->
-        <div id="add_project" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header login-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h4 class="modal-title">Whats on Your Mind</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                        <button type="button" class="add-project" data-dismiss="modal">Save</button>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -999,7 +982,7 @@ header {
       <div id="app">
         <!-- Button trigger modal -->
 
-
+<vue-login></vue-login>
 <call></call>
 </div>
 
