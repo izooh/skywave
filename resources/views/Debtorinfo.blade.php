@@ -22,6 +22,7 @@
    });
 });
 
+
       </script>
         <!-- Styles -->
         <style>
@@ -829,7 +830,7 @@ header {
                     </div>
                     <div class="navi">
                         <ul>
-                            <li ><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                            <li ><a href="{{url("/")}}"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                             <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
                               <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agent Summary</span></a></li>
                             <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
@@ -858,7 +859,7 @@ header {
                             <div class="col-md-5">
                                 <div class="header-rightside">
                                     <ul class="list-inline header-top pull-right">
-                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Update Call Info+</a></li>
+                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#callModal">Update Call Info+</a></li>
                                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                                         <li>
                                             <a href="#" class="icon-info">
@@ -889,7 +890,7 @@ header {
                         </header>
                     </div>
                     <div class="user-dashboard">
-                        <h1>Debtors Infotmation</h1>
+                        <h1>Debtors Information</h1>
                         <div class="row">
                           <div class="col-md-6 col-sm-12 col-xs-12 gutter">
                             <table class="table table-striped table-dark">
@@ -980,9 +981,7 @@ header {
                         <h4 class="modal-title">Whats on Your Mind</h4>
                     </div>
                     <div class="modal-body">
-                                <input type="text" placeholder="Suggestion Title" name="Title">
-                                <input type="text" placeholder="Author" name="Author">
-                                <textarea placeholder="Desicrption"></textarea>
+
                         </div>
                     <div class="modal-footer">
                         <button type="button" class="cancel" data-dismiss="modal">Close</button>
@@ -1000,10 +999,14 @@ header {
       <div id="app">
         <!-- Button trigger modal -->
 
-<vue-login></vue-login>
+
+<call></call>
 </div>
 
       <script src="{{asset('js/app.js') }}"></script>
+      <script>
+
+      </script>
 
     </body>
 </html>

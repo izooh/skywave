@@ -1,0 +1,79 @@
+<template>
+<div>
+
+<!-- Modal -->
+<div id="callModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header login-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h4 class="modal-title">Update call Information</h4>
+          </div>
+          <div class="modal-body">
+          <form>
+          <div class="form-group">
+    <select  class="form-control" v-model="selectbox1">
+        <option value="Right Party Contact">Right Party Contact</option>
+        <option value="Third Party Contact">Third Party Contact</option>
+        <option value="Temporary Not Contacted">Temporary Not Contacted</option>
+    </select>
+    </div>
+    <br>
+    <div class="form-group">
+    <select class="form-control" v-model="selectbox2">
+        <option v-for="option in setOptions" v-bind:value="option.val">{{option.text}}</option>
+    </select>
+    </div>
+    <br><br>
+    <div class="form-group">
+    <input type="text" class="form-control" id="PTP amount"  placeholder="PTP Amount">
+
+  </div>
+    <span>selected: {{selectbox1}} {{selectbox2}}</span>
+    </form>
+
+
+        </div>
+        <div class="modal-footer">
+        <div class="col-md-6">
+            <button type="submit"  class="btn btn-primary"><i class="fa fa-paper-plane"></i> Update</button>
+</div>
+        </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</template>
+<script>
+export default{
+data(){
+return{
+selectbox1:"",
+selectbox2:""
+
+}
+},
+computed: {
+  setOptions: function(){
+    if (this.selectbox1 === 'Right Party Contact'){
+       var options = [{val: 'Promise to Pay', text: 'Promise To pay'},
+                      {val: 'Negotiation in progress', text: 'Negotiation in progress'},
+                      {val: 'Non commital', text: 'Non commital'}]
+    } else if (this.selectbox1 === 'drink'){
+       var options = [{val: 'beer', text: 'Beer'},
+                      {val: 'wine', text: 'Wine'},
+                      {val: 'coke', text: 'Coke'},
+                      {val: 'water', text: 'Water'}]
+    } else if (this.selectbox1 === 'desert'){
+       var options = [{val: 'tiramisu', text: 'Tiramisu'},
+                      {val: 'icecream', text: 'Icecream'},
+                      {val: 'espresso', text: 'Espresso'}]
+    }
+    return options
+  }
+}
+}
+
+</script>

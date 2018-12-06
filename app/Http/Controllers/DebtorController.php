@@ -25,7 +25,7 @@ class DebtorController extends Controller
     public function create()
     {
         //retreiving debtors info
-      $Debtor=Debtor::Where('id',1)->with('payment')->get();
+      $Debtor=Debtor::Where('id',2)->with('payment')->get();
      return view('Debtorinfo',['Debtor'=>$Debtor]);
          //return view('Debtorinfo',['Debtor'=>$Debtor]);
     }

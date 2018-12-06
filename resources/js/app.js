@@ -20,6 +20,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('vue-login', require('./components/Login.vue'));
+Vue.component('call', require('./components/Call.vue'));
 
 const app = new Vue({
     el: '#app'

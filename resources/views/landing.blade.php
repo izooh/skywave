@@ -850,7 +850,7 @@ header {
                                     </div>
                                 </nav>
                                 <div class="search hidden-xs hidden-sm">
-                                    <input type="text" placeholder="Search" id="search">
+                                    <input type="text" placeholder="Enter Debtors Number" id="search">
                                 </div>
                             </div>
                             <div class="col-md-5">
