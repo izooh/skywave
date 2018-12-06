@@ -47992,12 +47992,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       selectbox1: "",
-      selectbox2: ""
+      selectbox2: "",
+      reason: "",
+      PTP_amount: ""
 
     };
   },
@@ -48005,7 +48012,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   computed: {
     setOptions: function setOptions() {
       if (this.selectbox1 === 'Right Party Contact') {
-        var options = [{ val: 'Promise to Pay', text: 'Promise To pay' }, { val: 'Negotiation in progress', text: 'Negotiation in progress' }, { val: 'Non commital', text: 'Non commital' }];
+        var options = [{ val: 'Promise to Pay', text: 'Promise To pay' }, { val: 'Negotiation in progress', text: 'Negotiation in progress' }, { val: 'Non commital', text: 'Non commital' }, { val: 'Inability To Pay', text: 'Inability To Pay' }];
       } else if (this.selectbox1 === 'Third Party Contact') {
         var options = [{ val: 'Debtor Not Around', text: 'Debtor Not Around' }, { val: 'Debtor Dead', text: 'Debtor Dead' }, { val: 'Commited', text: 'Commited' }];
       } else if (this.selectbox1 === 'desert') {
@@ -48036,6 +48043,8 @@ var render = function() {
             _c("div", { staticClass: "modal-body" }, [
               _c("form", [
                 _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Contact Type")]),
+                  _vm._v(" "),
                   _c(
                     "select",
                     {
@@ -48048,6 +48057,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
+                      attrs: { id: "e1" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -48091,6 +48101,8 @@ var render = function() {
                 _c("br"),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Contact Status")]),
+                  _vm._v(" "),
                   _c(
                     "select",
                     {
@@ -48130,22 +48142,101 @@ var render = function() {
                 _c("br"),
                 _c("br"),
                 _vm._v(" "),
-                _vm._m(1),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Non Payment Reason")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.reason,
+                          expression: "reason"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.reason = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [_vm._v("....")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Lost Job" } }, [
+                        _vm._v("Lost Job")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Low Funds" } }, [
+                        _vm._v("Low Funds")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Debtor Sick" } }, [
+                        _vm._v("Debtor Sick")
+                      ])
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
-                _vm._m(2),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Promise To Pay Amount")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.PTP_amount,
+                        expression: "PTP_amount"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "PTP amount",
+                      placeholder: "PTP Amount"
+                    },
+                    domProps: { value: _vm.PTP_amount },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.PTP_amount = $event.target.value
+                      }
+                    }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("span", [
                   _vm._v(
                     "selected: " +
                       _vm._s(_vm.selectbox1) +
                       " " +
-                      _vm._s(_vm.selectbox2)
+                      _vm._s(_vm.selectbox2) +
+                      " " +
+                      _vm._s(_vm.reason) +
+                      " " +
+                      _vm._s(_vm.PTP_amount)
                   )
                 ])
               ])
             ]),
             _vm._v(" "),
-            _vm._m(3)
+            _vm._m(1)
           ])
         ])
       ]
@@ -48170,35 +48261,6 @@ var staticRenderFns = [
       _c("h4", { staticClass: "modal-title" }, [
         _vm._v("Update call Information")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("select", { staticClass: "form-control" }, [
-        _c("option", { attrs: { value: "" } }, [_vm._v("....")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "Lost Job" } }, [_vm._v("Lost Job")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "Low Funds" } }, [_vm._v("Low Funds")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "Debtor Sick" } }, [
-          _vm._v("Debtor Sick")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", id: "PTP amount", placeholder: "PTP Amount" }
-      })
     ])
   },
   function() {

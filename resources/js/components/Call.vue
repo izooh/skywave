@@ -13,7 +13,8 @@
           <div class="modal-body">
           <form>
           <div class="form-group">
-    <select  class="form-control" v-model="selectbox1">
+          <label>Contact Type</label>
+    <select  class="form-control" id="e1" v-model="selectbox1">
     <option value="">....</option>
         <option value="Right Party Contact">Right Party Contact</option>
         <option value="Third Party Contact">Third Party Contact</option>
@@ -22,13 +23,15 @@
     </div>
     <br>
     <div class="form-group">
+    <label>Contact Status</label>
     <select class="form-control" v-model="selectbox2">
         <option v-for="option in setOptions" v-bind:value="option.val">{{option.text}}</option>
     </select>
     </div>
     <br><br>
     <div class="form-group">
-<select  class="form-control">
+    <label>Non Payment Reason</label>
+<select  class="form-control" v-model="reason">
   <option value="">....</option>
   <option value="Lost Job">Lost Job</option>
   <option value="Low Funds">Low Funds</option>
@@ -36,10 +39,12 @@
 </select>
 </div>
     <div class="form-group">
-    <input type="text" class="form-control" id="PTP amount"  placeholder="PTP Amount">
+    <label>Promise To Pay Amount</label>
+    <input type="text" class="form-control" id="PTP amount"  placeholder="PTP Amount" v-model="PTP_amount">
 
   </div>
-    <span>selected: {{selectbox1}} {{selectbox2}}</span>
+
+    <span>selected: {{selectbox1}} {{selectbox2}} {{reason}} {{PTP_amount}}</span>
     </form>
 
 
@@ -60,7 +65,11 @@ export default{
 data(){
 return{
 selectbox1:"",
-selectbox2:""
+selectbox2:"",
+reason:"",
+PTP_amount:""
+
+
 
 }
 },
@@ -69,7 +78,9 @@ computed: {
     if (this.selectbox1 === 'Right Party Contact'){
        var options = [{val: 'Promise to Pay', text: 'Promise To pay'},
                       {val: 'Negotiation in progress', text: 'Negotiation in progress'},
-                      {val: 'Non commital', text: 'Non commital'}]
+                      {val: 'Non commital', text: 'Non commital'},
+                      {val: 'Inability To Pay', text: 'Inability To Pay'}
+                      ]
     } else if (this.selectbox1 === 'Third Party Contact'){
        var options = [{val: 'Debtor Not Around', text: 'Debtor Not Around'},
                       {val: 'Debtor Dead', text: 'Debtor Dead'},
