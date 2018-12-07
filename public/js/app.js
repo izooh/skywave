@@ -47935,6 +47935,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -47997,26 +47999,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selectbox1: "",
-      selectbox2: "",
+      Contact_Type: "",
+      Contact_Status: "",
       reason: "",
-      PTP_amount: ""
+      PTP_amount: "",
+      PTP_date: "",
+      Call_date: "",
+      message: ""
 
     };
   },
 
+  methods: {
+    SendData: function SendData() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('http://localhost/skywave/public/call', {
+        Contact_Type: this.Contact_Type,
+        Contact_Status: this.Contact_Status,
+        reason: this.reason,
+        PTP_amount: this.PTP_amount,
+        PTP_date: this.PTP_date,
+        Call_date: this.Call_date
+      }).then(function (res) {
+        console.log(res);
+        _this.message = 'call details has been succefully updated';
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  },
+
   computed: {
     setOptions: function setOptions() {
-      if (this.selectbox1 === 'Right Party Contact') {
-        var options = [{ val: 'Promise to Pay', text: 'Promise To pay' }, { val: 'Negotiation in progress', text: 'Negotiation in progress' }, { val: 'Non commital', text: 'Non commital' }, { val: 'Inability To Pay', text: 'Inability To Pay' }];
-      } else if (this.selectbox1 === 'Third Party Contact') {
-        var options = [{ val: 'Debtor Not Around', text: 'Debtor Not Around' }, { val: 'Debtor Dead', text: 'Debtor Dead' }, { val: 'Commited', text: 'Commited' }];
-      } else if (this.selectbox1 === 'desert') {
-        var options = [{ val: 'tiramisu', text: 'Tiramisu' }, { val: 'icecream', text: 'Icecream' }, { val: 'espresso', text: 'Espresso' }];
+      if (this.Contact_Type === 'Right Party Contact') {
+        var options = [{ val: 'Promise to Pay', text: 'Promise To pay' }, { val: 'Negotiation in progress', text: 'Negotiation in progress' }, { val: 'Non commital', text: 'Non commital' }, { val: 'Inability To Pay', text: 'Inability To Pay' }, { val: 'Debt Cleared', text: 'Debt Cleared' }];
+      } else if (this.Contact_Type === 'Third Party Contact') {
+        var options = [{ val: 'Debtor Not Around', text: 'Debtor Not Around' }, { val: 'Debtor Dead', text: 'Debtor Dead' }, { val: 'New Line', text: 'New Line' }, { val: 'Debtor Sick', text: 'Debtor Sick' }];
+      } else if (this.Contact_Type === 'Temporary Not Contacted') {
+        var options = [{ val: 'Ringing No Response', text: 'Ringing No Response' }, { val: 'Phone Switched Off', text: 'Phone Switched Off' }, { val: 'Hanged Up', text: 'Hanged Up' }];
       }
       return options;
     }
@@ -48041,202 +48081,301 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c("form", [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Contact Type")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.selectbox1,
-                          expression: "selectbox1"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "e1" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.selectbox1 = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "" } }, [_vm._v("....")]),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        { attrs: { value: "Right Party Contact" } },
-                        [_vm._v("Right Party Contact")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        { attrs: { value: "Third Party Contact" } },
-                        [_vm._v("Third Party Contact")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        { attrs: { value: "Temporary Not Contacted" } },
-                        [_vm._v("Temporary Not Contacted")]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Contact Status")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.selectbox2,
-                          expression: "selectbox2"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.selectbox2 = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    _vm._l(_vm.setOptions, function(option) {
-                      return _c("option", { domProps: { value: option.val } }, [
-                        _vm._v(_vm._s(option.text))
-                      ])
-                    })
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Non Payment Reason")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.reason,
-                          expression: "reason"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.reason = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "" } }, [_vm._v("....")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Lost Job" } }, [
-                        _vm._v("Lost Job")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Low Funds" } }, [
-                        _vm._v("Low Funds")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Debtor Sick" } }, [
-                        _vm._v("Debtor Sick")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Promise To Pay Amount")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.PTP_amount,
-                        expression: "PTP_amount"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "PTP amount",
-                      placeholder: "PTP Amount"
-                    },
-                    domProps: { value: _vm.PTP_amount },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.PTP_amount = $event.target.value
-                      }
+              _c(
+                "form",
+                {
+                  attrs: { role: "form" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.SendData()
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("span", [
-                  _vm._v(
-                    "selected: " +
-                      _vm._s(_vm.selectbox1) +
-                      " " +
-                      _vm._s(_vm.selectbox2) +
-                      " " +
-                      _vm._s(_vm.reason) +
-                      " " +
-                      _vm._s(_vm.PTP_amount)
-                  )
-                ])
-              ])
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Contact Type")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Contact_Type,
+                            expression: "Contact_Type"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "e1" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.Contact_Type = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("....")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "Right Party Contact" } },
+                          [_vm._v("Right Party Contact")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "Third Party Contact" } },
+                          [_vm._v("Third Party Contact")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "Temporary Not Contacted" } },
+                          [_vm._v("Temporary Not Contacted")]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Contact Status")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Contact_Status,
+                            expression: "Contact_Status"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.Contact_Status = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      _vm._l(_vm.setOptions, function(option) {
+                        return _c(
+                          "option",
+                          { domProps: { value: option.val } },
+                          [_vm._v(_vm._s(option.text))]
+                        )
+                      })
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Non Payment Reason")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.reason,
+                            expression: "reason"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.reason = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("....")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Lost Job" } }, [
+                          _vm._v("Lost Job")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Low Funds" } }, [
+                          _vm._v("Low Funds")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Debtor Sick" } }, [
+                          _vm._v("Debtor Sick")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Promise To Pay Amount")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.PTP_amount,
+                          expression: "PTP_amount"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "PTP amount",
+                        placeholder: "PTP Amount"
+                      },
+                      domProps: { value: _vm.PTP_amount },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.PTP_amount = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Promise To Pay Date")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.PTP_date,
+                          expression: "PTP_date"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "PTP Date",
+                        placeholder: "PTP Date"
+                      },
+                      domProps: { value: _vm.PTP_date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.PTP_date = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Next Call Date")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Call_date,
+                          expression: "Call_date"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "Call Date",
+                        placeholder: "Next Call Date"
+                      },
+                      domProps: { value: _vm.Call_date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Call_date = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      "selected: " +
+                        _vm._s(_vm.Contact_Type) +
+                        " ," +
+                        _vm._s(_vm.Contact_Status) +
+                        " ," +
+                        _vm._s(_vm.reason) +
+                        " ," +
+                        _vm._s(_vm.PTP_amount)
+                    )
+                  ]),
+                  _c("br"),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              )
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c("div", { staticClass: "modal-footer" }, [
+              _vm.message
+                ? _c("ul", { staticClass: "list-group alert alert-success" }, [
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v(_vm._s(_vm.message))
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "cancel",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              )
+            ])
           ])
         ])
       ]
@@ -48267,15 +48406,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_c("i", { staticClass: "fa fa-paper-plane" }), _vm._v(" Update")]
-        )
-      ])
-    ])
+    return _c(
+      "button",
+      { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+      [_c("i", { staticClass: "fa fa-paper-plane" }), _vm._v(" Update")]
+    )
   }
 ]
 render._withStripped = true

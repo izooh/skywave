@@ -18,7 +18,7 @@ Route::get('/reg_page', function () {
 Route::get('/', function () {
     return view('landing');
 });
-Route::post('/test','testController@login');
+Route::post('/call','CallController@store');
 
 Auth::routes();
 
@@ -29,4 +29,7 @@ Route::middleware('admin')->prefix('admin')->group(function(){
 });
 Route::prefix('debtor')->group(function(){
   Route::resource('debtors','DebtorController');
+});
+Route::prefix('calls')->group(function(){
+  Route::resource('call','CallController');
 });
