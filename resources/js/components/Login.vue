@@ -129,7 +129,7 @@ return(false)
 },
 loginAttempt(){
 this.errors=[]
-axios.post('http://localhost/skywave/public/login',{
+axios.post('http://localhost:8000/login',{
 email:this.email,
 password:this.password,
 remember:this.remember

@@ -25,7 +25,7 @@
       </script>
         <!-- Styles -->
         <style>
-            html, body {
+  html, body {
                 background-image:url('../app/images/lk.jpg');
                  background-size: 1600px 800px;
                 color: #636b6f;
@@ -826,7 +826,7 @@ header {
                     <div class="navi">
                         <ul>
                             <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                            <li><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
+                            <li><a href="{{url("debtor/debtors/create")}}"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
                               <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agent Summary</span></a></li>
                             <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
                             <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendar</span></a></li>
@@ -886,16 +886,40 @@ header {
                             </div>
                         </header>
                     </div>
-                    <div class="user-dashboard">
-                        <h1>Hello, ngoroboi</h1>
+                    <div class="user-dashboard>
                         <div class="row">
                           <div class="col-md-12 col-sm-12 col-xs-12 gutter">
-                              <h1>component rendering goes here</h1>
+                              <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-bookmark"></span> Loan dashboard</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6">
+                          <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Total Calls</a>
+                          <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Total Connected Calls</a>
+                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Total Temporary Not Contacted</a>
+                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Total PTPS</a>
+                        </div>
+                        <div class="col-xs-6 col-md-6">
+                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
+                          <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Paid PTPS</a>
+                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Unpaid Ptps</a>
+                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>Tags</a>
+                        </div>
+                    </div>
+                    <a href="http://www.jquery2dotnet.com/" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span>Company Website</a>
+                </div>
+            </div>
+        </div>
                           </div>
                             <div class="col-md-5 col-sm-5 col-xs-12 gutter">
 
                                 <div class="sales">
-                                    <h2>Your Sale</h2>
+                                    <h2>Collection</h2>
 
                                     <div class="btn-group">
                                         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

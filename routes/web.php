@@ -18,7 +18,7 @@ Route::get('/reg_page', function () {
 Route::get('/', function () {
     return view('landing');
 });
-Route::post('/call','CallController@store');
+
 
 Auth::routes();
 

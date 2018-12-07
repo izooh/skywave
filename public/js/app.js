@@ -47476,7 +47476,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       this.errors = [];
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('http://localhost/skywave/public/login', {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('http://localhost:8000/login', {
         email: this.email,
         password: this.password,
         remember: this.remember
@@ -48013,6 +48013,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48033,7 +48036,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     SendData: function SendData() {
       var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('http://localhost/skywave/public/call', {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('http://localhost:8000/calls/call', {
         Contact_Type: this.Contact_Type,
         Contact_Status: this.Contact_Status,
         reason: this.reason,
@@ -48359,13 +48362,19 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer" }, [
-              _vm.message
-                ? _c("ul", { staticClass: "list-group alert alert-success" }, [
-                    _c("li", { staticClass: "list-group-item" }, [
-                      _vm._v(_vm._s(_vm.message))
-                    ])
-                  ])
-                : _vm._e(),
+              _c("div", { staticClass: "pull-left" }, [
+                _vm.message
+                  ? _c(
+                      "ul",
+                      { staticClass: "list-group alert alert-success" },
+                      [
+                        _c("li", { staticClass: "list-group-item" }, [
+                          _vm._v(_vm._s(_vm.message))
+                        ])
+                      ]
+                    )
+                  : _vm._e()
+              ]),
               _vm._v(" "),
               _c(
                 "button",

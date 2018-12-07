@@ -62,9 +62,12 @@
 
         </div>
         <div class="modal-footer">
+<div class="pull-left">
         <ul class="list-group alert alert-success" v-if='message'>
           <li class="list-group-item">{{message}}</li>
-        </ul>
+</ul>
+        </div>
+
         <button type="button" class="cancel" data-dismiss="modal">Close</button>
 
         </div>
@@ -95,7 +98,7 @@ message:""
 methods:
 {
 SendData(){
-axios.post('http://localhost/skywave/public/call',{
+axios.post('http://localhost:8000/calls/call',{
 Contact_Type:this.Contact_Type,
 Contact_Status:this.Contact_Status,
 reason:this.reason,
