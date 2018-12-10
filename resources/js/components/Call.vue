@@ -98,7 +98,7 @@ message:""
 methods:
 {
 SendData(){
-axios.post('http://localhost:8000/calls/call',{
+axios.post('http://localhost/skywave/public/calls/call',{
 Contact_Type:this.Contact_Type,
 Contact_Status:this.Contact_Status,
 reason:this.reason,
