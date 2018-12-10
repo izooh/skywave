@@ -22,10 +22,14 @@
    });
 });
 
+
       </script>
         <!-- Styles -->
         <style>
-  html, body {
+        table { border-collapse: collapse; }
+        tr { display: block; float: left; }
+        th, td { display: block; border: 1px solid black; }
+            html, body {
                 background-image:url('../app/images/lk.jpg');
                  background-size: 1600px 800px;
                 color: #636b6f;
@@ -778,6 +782,7 @@ header {
     width: 100%;
 }
 }
+
         </style>
         <meta name="csrf-token" content="{{csrf_token()}}">
   <script>window.Laravel={csrfToken:'{{csrf_token()}}'}</script>
@@ -825,8 +830,8 @@ header {
                     </div>
                     <div class="navi">
                         <ul>
-                            <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                            <li><a href="{{url("debtor/debtors/create")}}"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
+                            <li ><a href="{{url("/")}}"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                            <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
                               <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agent Summary</span></a></li>
                             <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
                             <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendar</span></a></li>
@@ -849,14 +854,12 @@ header {
                                         </button>
                                     </div>
                                 </nav>
-                                <div class="search hidden-xs hidden-sm">
-                                    <input type="text" placeholder="Enter Debtors Number" id="search">
-                                </div>
+
                             </div>
                             <div class="col-md-5">
                                 <div class="header-rightside">
                                     <ul class="list-inline header-top pull-right">
-                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Suggestion Box</a></li>
+                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#callModal">Update Call Info</a></li>
                                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                                         <li>
                                             <a href="#" class="icon-info">
@@ -886,53 +889,60 @@ header {
                             </div>
                         </header>
                     </div>
-                    <div class="user-dashboard>
+                    <div class="user-dashboard">
+                        <h1>Debtors Information</h1>
                         <div class="row">
-                          <div class="col-md-12 col-sm-12 col-xs-12 gutter">
-                              <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-bookmark"></span> Loan dashboard</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Total Calls</a>
-                          <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Total Connected Calls</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Total Temporary Not Contacted</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Total PTPS</a>
-                        </div>
-                        <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
-                          <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Paid PTPS</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Unpaid Ptps</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>Tags</a>
-                        </div>
-                    </div>
-                    <a href="http://www.jquery2dotnet.com/" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span>Company Website</a>
-                </div>
-            </div>
-        </div>
+                          <div class="col-md-6 col-sm-12 col-xs-12 gutter">
+                            <table class="table table-striped table-dark">
+                                    <tr>
+                                        <th> Full Name</th>
+                                        <th> Id Number</th>
+                                        <th> Phone Number </th>
+                                        <th> email </th>
+                                        <th> Outsourced Amount</th>
+                                        <th>Loan Taken Date </th>
+                                        <th>Loan Due Date </th>
+                                    </tr>
+
+                                     @foreach($Debtor as $D)
+                                      <tr>
+                                          <td> {{$D->FullName}} </td>
+                                          <td> {{$D->IdentityNo}} </td>
+                                          <td> {{$D->MobilePhone}} </td>
+                                          <td> {{$D->Email}} </td>
+                                          <td> {{$D->default}} </td>
+                                          <td> {{$D->OriginationDate}} </td>
+                                          <td> {{$D->DueDate}} </td>
+                                      </tr>
+                                     @endforeach
+
+                            </table>
+                            <br>
+                            <br>
+
                           </div>
                             <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                              <h1>Payment Record</h1>
 
-                                <div class="sales">
-                                    <h2>Collection</h2>
+                              <table class="table table-striped table-dark">
+                                      <tr>
+                                          <th> Payment Date</th>
+                                          <th> LastPayment</th>
+                                          <th> Current Balance </th>
 
-                                    <div class="btn-group">
-                                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span>Period:</span> Last Year
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a href="#">2012</a>
-                                            <a href="#">2014</a>
-                                            <a href="#">2015</a>
-                                            <a href="#">2016</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                      </tr>
+                              @foreach($Debtor as $D)
+                                  @foreach($D->payment as $P)
+                                    <tr>
+                                      <td>{{$P->LastPaymentDate}}</td>
+                                      <td>{{$P->LastPaymentAmount}}</td>
+                                      <td>{{$P->currentBalance}}</td>
+
+                                      </tr>
+
+                                  @endforeach
+                              @endforeach
+                              </table>
                             </div>
                             <div class="col-md-7 col-sm-7 col-xs-12 gutter">
 
@@ -961,25 +971,6 @@ header {
 
 
         <!-- Modal -->
-        <div id="add_project" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header login-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h4 class="modal-title">Whats on Your Mind</h4>
-                    </div>
-                    <div class="modal-body">
-                                <input type="text" placeholder="Suggestion Title" name="Title">
-                                <input type="text" placeholder="Author" name="Author">
-                                <textarea placeholder="Desicrption"></textarea>
-                        </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                        <button type="button" class="add-project" data-dismiss="modal">Save</button>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -992,9 +983,13 @@ header {
         <!-- Button trigger modal -->
 
 <vue-login></vue-login>
+<call></call>
 </div>
 
       <script src="{{asset('js/app.js') }}"></script>
+      <script>
+
+      </script>
 
     </body>
 </html>

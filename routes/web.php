@@ -18,7 +18,7 @@ Route::get('/reg_page', function () {
 Route::get('/', function () {
     return view('landing');
 });
-Route::post('/test','testController@login');
+
 
 Auth::routes();
 
@@ -26,4 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('admin')->prefix('admin')->group(function(){
   Route::resource('series','SeriesController');
+});
+Route::prefix('debtor')->group(function(){
+  Route::resource('debtors','DebtorController');
+});
+Route::prefix('calls')->group(function(){
+  Route::resource('call','CallController');
 });
