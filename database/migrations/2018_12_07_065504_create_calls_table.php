@@ -16,6 +16,7 @@ class CreateCallsTable extends Migration
         Schema::create('calls', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('Debtor_id');
+            $table->string('User');
             $table->string('Contact_Type');
             $table->string('Contact_Status');
             $table->string('reason');

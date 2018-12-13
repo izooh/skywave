@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Call;
+  use Illuminate\Support\Facades\Auth;
 
 class CallController extends Controller
 {
@@ -14,8 +15,8 @@ class CallController extends Controller
      */
     public function index()
     {
-      $d=session('d');
-      dd($d);
+      $user = Auth::user()->name;
+      print_r($user);
     }
 
     /**
@@ -46,7 +47,8 @@ class CallController extends Controller
         'PTP_amount'=>$request->PTP_amount,
         'PTP_date'=>$request->PTP_date,
         'Call_date'=>$request->Call_date,
-        'Debtor_id'=>session('d')
+        'Debtor_id'=>session('d'),
+        'User' =>Auth::user()->name
 
     ]);
     }
