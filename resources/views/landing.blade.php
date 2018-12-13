@@ -821,7 +821,7 @@ header {
             <div class="row display-table-row">
                 <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                     <div class="logo">
-                        <img url('../app/images/lk.jpg'>);
+
                     </div>
                     <div class="navi">
                         <ul>
@@ -850,8 +850,8 @@ header {
                                     </div>
                                 </nav>
                                 <div class="search hidden-xs hidden-sm">
-                                    <input type="text" placeholder="Enter Debtors Number" id="search">
-                                </div>
+                                  <input type="text" placeholder="Enter Debtors Number" id="search">
+                        </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="header-rightside">
@@ -972,7 +972,7 @@ header {
                     </div>
                     <div class="modal-body">
                                 <input type="text" placeholder="Suggestion Title" name="Title">
-                                <input type="text" placeholder="Author" name="Author">
+                                <input type="text" placeholder="Agent" name="Agent">
                                 <textarea placeholder="Desicrption"></textarea>
                         </div>
                     <div class="modal-footer">

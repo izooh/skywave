@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Debtor;
 
+
 class DebtorController extends Controller
 {
     /**
@@ -24,12 +25,8 @@ class DebtorController extends Controller
      */
     public function create()
     {
-        //retreiving debtors info
-      $Debtor=Debtor::Where('id',1)->with('payment')->get();
-     return view('Debtorinfo',['Debtor'=>$Debtor]);
-         //return view('Debtorinfo',['Debtor'=>$Debtor]);
-    }
 
+}
     /**
      * Store a newly created resource in storage.
      *
@@ -49,8 +46,18 @@ class DebtorController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+
+      //retreiving debtors info while limiting payment to 2 records
+      $Debtor=Debtor::where('id',$id)->with([
+'payment' => function($q) {
+   $q->take(2);
+ }
+])->get();
+session()->put('d',$id);
+
+return view('Debtorinfo',['Debtor'=>$Debtor]);
+       //return view('Debtorinfo',['Debtor'=>$Debtor]);
+  }
 
     /**
      * Show the form for editing the specified resource.

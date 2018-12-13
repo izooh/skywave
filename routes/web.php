@@ -18,6 +18,9 @@ Route::get('/reg_page', function () {
 Route::get('/', function () {
     return view('landing');
 });
+Route::get('/testing', function () {
+    return view('Callhistory');
+});
 
 
 Auth::routes();

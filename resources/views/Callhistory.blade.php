@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -26,9 +27,7 @@
       </script>
         <!-- Styles -->
         <style>
-        table { border-collapse: collapse; }
-        tr { display: block; float: left; }
-        th, td { display: block; border: 1px solid black; }
+
             html, body {
                 background-image:url('../app/images/lk.jpg');
                  background-size: 1600px 800px;
@@ -892,30 +891,34 @@ header {
                     <div class="user-dashboard">
                         <h1>Debtors Information</h1>
                         <div class="row">
-                          <div class="col-md-6 col-sm-12 col-xs-12 gutter">
-                            <table class="table table-striped table-dark">
-                                    <tr>
-                                        <th> Full Name</th>
-                                        <th> Id Number</th>
-                                        <th> Phone Number </th>
-                                        <th> email </th>
-                                        <th> Outsourced Amount</th>
-                                        <th>Loan Taken Date </th>
-                                        <th>Loan Due Date </th>
-                                    </tr>
+                          <div class="col-md-12 col-sm-12 col-xs-12 gutter">
+                            <table class="table">
+                            <thead>
+                              <tr>
 
-                                     @foreach($Debtor as $D)
-                                      <tr>
-                                          <td> {{$D->FullName}} </td>
-                                          <td> {{$D->IdentityNo}} </td>
-                                          <td> {{$D->MobilePhone}} </td>
-                                          <td> {{$D->Email}} </td>
-                                          <td> {{$D->default}} </td>
-                                          <td> {{$D->OriginationDate}} </td>
-                                          <td> {{$D->DueDate}} </td>
-                                      </tr>
-                                     @endforeach
+                                <th scope="col">Contact Type</th>
+                                <th scope="col">Contact status</th>
+                                <th scope="col">Ptp Amount</th>
+                                <th scope="col">Ptp date</th>
+                                <th scope="col">Debtor Called On</th>
+                                <th scope="col">Last Caller</th>
 
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @foreach($call_history as $call)
+                              <tr>
+
+                              <td>{{$call->Contact_Type}}</td>
+                                <td>{{$call->Contact_Status}}</td>
+                                <td>{{$call->PTP_amount}}</td>
+                                <td>{{$call->PTP_date}}</td>
+                                <td>{{$call->created_at}}</td>
+                                <td><p>debtor called by..</p></td>
+                              </tr>
+                              @endforeach
+
+                            </tbody>
                             </table>
                             <br>
                             <br>
@@ -924,25 +927,6 @@ header {
                             <div class="col-md-6 col-sm-5 col-xs-12 gutter">
                               <h1>Payment Record</h1>
 
-                              <table class="table table-striped table-dark">
-                                      <tr>
-                                          <th> Payment Date</th>
-                                          <th> LastPayment</th>
-                                          <th> Current Balance </th>
-
-                                      </tr>
-                              @foreach($Debtor as $D)
-                                  @foreach($D->payment as $P)
-                                    <tr>
-                                      <td>{{$P->LastPaymentDate}}</td>
-                                      <td>{{$P->LastPaymentAmount}}</td>
-                                      <td>{{$P->currentBalance}}</td>
-
-                                      </tr>
-
-                                  @endforeach
-                              @endforeach
-                              </table>
                             </div>
                             <div class="col-md-7 col-sm-7 col-xs-12 gutter">
 
@@ -984,6 +968,7 @@ header {
 
 <vue-login></vue-login>
 <call></call>
+
 </div>
 
       <script src="{{asset('js/app.js') }}"></script>

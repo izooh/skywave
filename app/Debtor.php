@@ -9,6 +9,6 @@ class Debtor extends Model
   //one to Many relationship to Payment Model
 public function payment()
   {
-    return $this->hasMany('App\Payment');
+    return $this->hasMany('App\Payment');//->latest()->limit(2);
   }
 }
