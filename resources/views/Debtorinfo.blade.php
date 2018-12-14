@@ -805,8 +805,26 @@ header {
 
 
         @if(auth()->check())
-        <strong><p class="text-primary bg-dark">Welcome {{auth()->user()->name}}</p></strong>
 
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Welcome {{auth()->user()->name}}</strong>
+                <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <div class="navbar-content">
+                        <p class="text-muted small">
+                            {{auth()->user()->email}}
+                        </p>
+                        <div class="divider">
+                        </div>
+                        <a href="#" class="">View Profile</a>
+                        <div class="divider">
+                        </div>
+                        <a href="{{url('/logout')}}" class="">LogOut</a>
+                    </div>
+                </li>
+            </ul>
+        </li>
           @else
             <li><a href="{{url("/reg_page")}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -826,7 +844,7 @@ header {
             <div class="row display-table-row">
                 <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                     <div class="logo">
-                      
+
                     </div>
                     <div class="navi">
                         <ul>
@@ -867,24 +885,7 @@ header {
                                                 <span class="label label-primary">3</span>
                                             </a>
                                         </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://jskrishna.com/work/merkury/images/user-pic.jpg" alt="user">
-                                                <b class="caret"></b></a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <div class="navbar-content">
-                                                        <span>isaacopicho</span>
-                                                        <p class="text-muted small">
-                                                            isaacopicho@gmail.com
-                                                        </p>
-                                                        <div class="divider">
-                                                        </div>
-                                                        <a href="#" class="view btn-sm active">View Profile</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+
                                 </div>
                             </div>
                         </header>
@@ -944,6 +945,7 @@ header {
                               @endforeach
                               </table>
                             </div>
+                          <strong>  <a href="{{url('calls/call/create')}}">click to view call history</a></strong>
                             <div class="col-md-7 col-sm-7 col-xs-12 gutter">
 
                                 <div class="sales report">

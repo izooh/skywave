@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use App\Exceptions\AuthFailedException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+
 
 
 class LoginController extends Controller
@@ -40,7 +42,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
+    public function logout(Request $request) {
+      Auth::logout();
+      return redirect('/');
+    }
 
 /**
  * The user has been authenticated.
