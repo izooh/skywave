@@ -44,6 +44,7 @@ class LoginController extends Controller
 
     public function logout(Request $request) {
       Auth::logout();
+      session()->flash('logout','you are currently LogedOut');
       return redirect('/');
     }
 

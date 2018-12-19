@@ -891,84 +891,70 @@ header {
                         </header>
                     </div>
                     <div class="user-dashboard">
-                        <h1>Debtors Information</h1>
-                        <div class="row">
-                          <div class="col-md-6 col-sm-12 col-xs-12 gutter">
-                            <table class="table table-striped table-dark">
-                                    <tr>
-                                        <th> Full Name</th>
-                                        <th> Id Number</th>
-                                        <th> Phone Number </th>
-                                        <th> email </th>
-                                        <th> Outsourced Amount</th>
-                                        <th>Loan Taken Date </th>
-                                        <th>Loan Due Date </th>
-                                    </tr>
-
-                                     @foreach($Debtor as $D)
-                                      <tr>
-                                          <td> {{$D->FullName}} </td>
-                                          <td> {{$D->IdentityNo}} </td>
-                                          <td> {{$D->MobilePhone}} </td>
-                                          <td> {{$D->Email}} </td>
-                                          <td> {{$D->default}} </td>
-                                          <td> {{$D->OriginationDate}} </td>
-                                          <td> {{$D->DueDate}} </td>
-                                      </tr>
-                                     @endforeach
-
-                            </table>
-                            <br>
-                            <br>
-
+                      <div class="panel panel-primary">
+                          <div class="panel-heading">
+                              <h3 class="panel-title">
+                                  <span class="glyphicon glyphicon-bookmark"></span>Debtors Information</h3>
                           </div>
-                            <div class="col-md-6 col-sm-5 col-xs-12 gutter">
-                              <h1>Payment Record</h1>
+                          <div class="panel-body">
+                            <div class="row">
+                              <div class="col-md-6 col-sm-12 col-xs-12 gutter">
+                                <table class="table table-striped table-dark">
+                                        <tr>
+                                            <th> Full Name</th>
+                                            <th> Id Number</th>
+                                            <th> Phone Number </th>
+                                            <th> email </th>
+                                            <th> Outsourced Amount</th>
+                                            <th>Loan Taken Date </th>
+                                            <th>Loan Due Date </th>
+                                        </tr>
 
-                              <table class="table table-striped table-dark">
-                                      <tr>
-                                          <th> Payment Date</th>
-                                          <th> LastPayment</th>
-                                          <th> Current Balance </th>
+                                         @foreach($Debtor as $D)
+                                          <tr>
+                                              <td> {{$D->FullName}} </td>
+                                              <td> {{$D->IdentityNo}} </td>
+                                              <td> {{$D->MobilePhone}} </td>
+                                              <td> {{$D->Email}} </td>
+                                              <td> {{$D->default}} </td>
+                                              <td> {{$D->OriginationDate}} </td>
+                                              <td> {{$D->DueDate}} </td>
+                                          </tr>
+                                         @endforeach
 
-                                      </tr>
-                              @foreach($Debtor as $D)
-                                  @foreach($D->payment as $P)
-                                    <tr>
-                                      <td>{{$P->LastPaymentDate}}</td>
-                                      <td>{{$P->LastPaymentAmount}}</td>
-                                      <td>{{$P->currentBalance}}</td>
+                                </table>
+                                <br>
+                                <br>
 
-                                      </tr>
+                              </div>
+                                <div class="col-md-7 col-sm-7 col-xs-12 gutter">
 
+                                  <table class="table table-striped table-dark">
+                                          <tr>
+                                              <th> Payment Date</th>
+                                              <th> LastPayment</th>
+                                              <th> Current Balance </th>
+
+                                          </tr>
+                                  @foreach($Debtor as $D)
+                                      @foreach($D->payment as $P)
+                                        <tr>
+                                          <td>{{$P->lastpaymentdate}}</td>
+                                          <td>{{$P->lastpaymentamount}}</td>
+                                          <td>{{$P->currentbalance}}</td>
+
+                                          </tr>
+
+                                      @endforeach
                                   @endforeach
-                              @endforeach
-                              </table>
-                            </div>
-                          <strong>  <a href="{{url('calls/call/create')}}">click to view call history</a></strong>
-                            <div class="col-md-7 col-sm-7 col-xs-12 gutter">
-
-                                <div class="sales report">
-                                    <h2>Report</h2>
-                                    <div class="btn-group">
-                                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span>Period:</span> Last Year
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a href="#">2012</a>
-                                            <a href="#">2014</a>
-                                            <a href="#">2015</a>
-                                            <a href="#">2016</a>
-                                        </div>
-                                    </div>
+                                  </table>
                                 </div>
-                            </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+                          <div class="panel-footer">
+                            <strong>  <a href="{{url('calls/call/create')}}" class="text-secondary">click to view call history</a></strong>
+                          </div>
+                        </div>
 
 
 

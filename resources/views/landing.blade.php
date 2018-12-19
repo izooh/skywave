@@ -895,7 +895,7 @@ header {
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-bookmark"></span> Loan dashboard</h3>
+                        <span class="glyphicon glyphicon-bookmark"></span> Call dashboard</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -984,7 +984,9 @@ header {
 
             </div>
         </div>
-        
+        @else
+        <strong>{{session('logout')}}</strong>
+
 
 
     @endif

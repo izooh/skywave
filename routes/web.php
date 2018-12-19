@@ -18,9 +18,7 @@ Route::get('/reg_page', function () {
 Route::get('/', function () {
     return view('landing');
 });
-Route::get('/testing', function () {
-    return view('Callhistory');
-});
+
 
 
 Auth::routes();
@@ -38,3 +36,12 @@ Route::prefix('debtor')->group(function(){
 Route::prefix('calls')->group(function(){
   Route::resource('call','CallController');
 });
+
+/*
+routes to upload payment csv
+*/
+Route::get('/payment', function () {
+    return view('paymentupload');
+});
+Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
+Route::post('/import_process', 'ImportController@processImport')->name('import_process');;

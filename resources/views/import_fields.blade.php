@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -27,7 +26,7 @@
       </script>
         <!-- Styles -->
         <style>
-
+      
             html, body {
                 background-image:url('../app/images/lk.jpg');
                  background-size: 1600px 800px;
@@ -800,13 +799,10 @@ header {
           <li><a href="#">Page 2</a></li>
         </ul>
         -->
-
         <ul class="nav navbar-nav navbar-right">
 
 
         @if(auth()->check())
-
-
 
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Welcome {{auth()->user()->name}}</strong>
@@ -827,8 +823,6 @@ header {
                 </li>
             </ul>
         </li>
-    
-
           @else
             <li><a href="{{url("/reg_page")}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -890,7 +884,6 @@ header {
                                             </a>
                                         </li>
 
-                                    </ul>
                                 </div>
                             </div>
                         </header>
@@ -899,54 +892,63 @@ header {
                       <div class="panel panel-primary">
                           <div class="panel-heading">
                               <h3 class="panel-title">
-                                  <span class="glyphicon glyphicon-bookmark"></span> Call History</h3>
+                                  <span class="glyphicon glyphicon-bookmark"></span>Payment upload</h3>
                           </div>
                           <div class="panel-body">
-                            <table class="table">
-                            <thead>
-                              <tr>
+                            <div class="row">
+                              <div class="col-md-6 col-sm-12 col-xs-12 gutter">
+                                            <form class="form-horizontal" method="POST" action="{{ route('import_process') }}">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
 
-                                <th scope="col">Contact Type</th>
-                                <th scope="col">Contact status</th>
-                                <th scope="col">Ptp Amount</th>
-                                <th scope="col">Ptp date</th>
-                                <th scope="col">Debtor Called On</th>
-                                <th scope="col">Last Caller</th>
+                                                        <table class="table">
+                                                            @if (isset($csv_header_fields))
+                                                            <tr>
+                                                                @foreach ($csv_header_fields as $csv_header_field)
+                                                                    <th>{{ $csv_header_field }}</th>
+                                                                @endforeach
+                                                            </tr>
+                                                            @endif
+                                                            @foreach ($csv_data as $row)
+                                                                <tr>
+                                                                @foreach ($row as $key => $value)
+                                                                    <td>{{ $value }}</td>
+                                                                @endforeach
+                                                                </tr>
+                                                            @endforeach
+                                                            <tr>
+                                                                @foreach ($csv_data[0] as $key => $value)
+                                                                    <td>
+                                                                        <select name="fields[{{ $key }}]">
+                                                                            @foreach (config('app.db_fields') as $db_field)
+                                                                                <option value="{{ (\Request::has('header')) ? $db_field : $loop->index }}"
+                                                                                    @if ($key === $db_field) selected @endif>{{ $db_field }}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </td>
+                                                                @endforeach
+                                                            </tr>
+                                                        </table>
 
-                              </tr>
-                            </thead>
-                            <tbody>
-                              @foreach($call_history as $call)
-                              <tr>
-
-                              <td>{{$call->Contact_Type}}</td>
-                                <td>{{$call->Contact_Status}}</td>
-                                <td>{{$call->PTP_amount}}</td>
-                                <td>{{$call->PTP_date}}</td>
-                                <td>{{$call->created_at}}</td>
-                                <td><p class="text text-info">debtor called by..{{$call->User}}</p></td>
-                              </tr>
-                              @endforeach
-
-                            </tbody>
-                            </table>
-                          </div>
-
-                      <div class="panel-footer">
-                        <form>
-<input type="button" class="btn btn-primary" value="Go back!" onclick="history.back()">
-</form>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Import Data
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <br>
+                                <br>
 
 
-                      </div>
+                          <div class="panel-footer">
 
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
 
 
@@ -964,7 +966,6 @@ header {
 
 <vue-login></vue-login>
 <call></call>
-
 </div>
 
       <script src="{{asset('js/app.js') }}"></script>

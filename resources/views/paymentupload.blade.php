@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -27,7 +26,9 @@
       </script>
         <!-- Styles -->
         <style>
-
+        table { border-collapse: collapse; }
+        tr { display: block; float: left; }
+        th, td { display: block; border: 1px solid black; }
             html, body {
                 background-image:url('../app/images/lk.jpg');
                  background-size: 1600px 800px;
@@ -800,13 +801,10 @@ header {
           <li><a href="#">Page 2</a></li>
         </ul>
         -->
-
         <ul class="nav navbar-nav navbar-right">
 
 
         @if(auth()->check())
-
-
 
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Welcome {{auth()->user()->name}}</strong>
@@ -827,8 +825,6 @@ header {
                 </li>
             </ul>
         </li>
-    
-
           @else
             <li><a href="{{url("/reg_page")}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -890,7 +886,6 @@ header {
                                             </a>
                                         </li>
 
-                                    </ul>
                                 </div>
                             </div>
                         </header>
@@ -899,54 +894,56 @@ header {
                       <div class="panel panel-primary">
                           <div class="panel-heading">
                               <h3 class="panel-title">
-                                  <span class="glyphicon glyphicon-bookmark"></span> Call History</h3>
+                                  <span class="glyphicon glyphicon-bookmark"></span>Payment upload</h3>
                           </div>
                           <div class="panel-body">
-                            <table class="table">
-                            <thead>
-                              <tr>
+                            <div class="row">
+                              <div class="col-md-6 col-sm-12 col-xs-12 gutter">
+                                <form class="form-horizontal" method="POST" action="{{ route('import_parse') }}" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
 
-                                <th scope="col">Contact Type</th>
-                                <th scope="col">Contact status</th>
-                                <th scope="col">Ptp Amount</th>
-                                <th scope="col">Ptp date</th>
-                                <th scope="col">Debtor Called On</th>
-                                <th scope="col">Last Caller</th>
+                                            <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
+                                                <label for="csv_file" class="col-md-4 control-label">CSV file to import</label>
 
-                              </tr>
-                            </thead>
-                            <tbody>
-                              @foreach($call_history as $call)
-                              <tr>
+                                                <div class="col-md-6">
+                                                    <input id="csv_file" type="file" class="form-control" name="csv_file" required>
 
-                              <td>{{$call->Contact_Type}}</td>
-                                <td>{{$call->Contact_Status}}</td>
-                                <td>{{$call->PTP_amount}}</td>
-                                <td>{{$call->PTP_date}}</td>
-                                <td>{{$call->created_at}}</td>
-                                <td><p class="text text-info">debtor called by..{{$call->User}}</p></td>
-                              </tr>
-                              @endforeach
+                                                    @if ($errors->has('csv_file'))
+                                                        <span class="help-block">
+                                                        <strong>{{ $errors->first('csv_file') }}</strong>
+                                                    </span>
+                                                    @endif
+                                                </div>
+                                            </div>
 
-                            </tbody>
-                            </table>
-                          </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-md-offset-4">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="header" checked> File contains header row?
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                      <div class="panel-footer">
-                        <form>
-<input type="button" class="btn btn-primary" value="Go back!" onclick="history.back()">
-</form>
+                                            <div class="form-group">
+                                                <div class="col-md-8 col-md-offset-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        Parse CSV
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                </div>
+                                <br>
+                                <br>
 
+                            
+                          <div class="panel-footer">
 
-                      </div>
-
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
 
 
@@ -964,7 +961,6 @@ header {
 
 <vue-login></vue-login>
 <call></call>
-
 </div>
 
       <script src="{{asset('js/app.js') }}"></script>
