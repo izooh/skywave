@@ -877,7 +877,6 @@ header {
                             <div class="col-md-5">
                                 <div class="header-rightside">
                                     <ul class="list-inline header-top pull-right">
-                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#callModal">Update Call Info</a></li>
                                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                                         <li>
                                             <a href="#" class="icon-info">
@@ -940,7 +939,7 @@ header {
                                 <br>
                                 <br>
 
-                            
+
                           <div class="panel-footer">
 
                         </div>
