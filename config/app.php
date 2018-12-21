@@ -210,5 +210,11 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    'db_fields' => [
+    'debtor_id',
+    'lastpaymentamount',
+    'lastpaymentdate',
+    'currentbalance'
+],
 
 ];

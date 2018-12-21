@@ -27,6 +27,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function call()
+    {
+      return $this->hasMany('App\Call');
+    }
     public function isAdmin()
     {
       return in_array($this->email,config('Entry.administrator'));

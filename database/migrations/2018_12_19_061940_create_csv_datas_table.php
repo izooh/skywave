@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaymentsTable extends Migration
+class CreateCsvDatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('csv_datas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('debtor_id');
-            $table->integer('lastpaymentamount');
-            $table->date('lastpaymentdate');
-            $table->integer('currentbalance');
+            $table->string('csv_filename');
+            $table->boolean('csv_header')->default(0);
+            $table->longText('csv_data');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('csv_datas');
     }
 }

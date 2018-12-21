@@ -104,13 +104,9 @@ input::-webkit-input-placeholder {
     <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"><strong>NG'OROBOI</strong></a>
+        <a class="navbar-brand" href="#"><strong>Skywave Managment</strong></a>
       </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-      </ul>
+
       <ul class="nav navbar-nav navbar-right">
 
 
@@ -129,14 +125,14 @@ input::-webkit-input-placeholder {
 
 
 		<div class="container">
-      
+
 
 
 			<div class="row main">
 
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
-	               		<h1 class="title">NG'OROBOI</h1>
+
 	               		<hr />
 	               	</div>
 	            </div>
@@ -181,9 +177,7 @@ input::-webkit-input-placeholder {
 						<div class="form-group ">
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
 						</div>
-						<div class="login-register">
-				            <a href="index.php">Login</a>
-				         </div>
+
 					</form>
 				</div>
 			</div>

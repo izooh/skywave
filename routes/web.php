@@ -20,7 +20,10 @@ Route::get('/', function () {
 });
 
 
+
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -33,3 +36,12 @@ Route::prefix('debtor')->group(function(){
 Route::prefix('calls')->group(function(){
   Route::resource('call','CallController');
 });
+
+/*
+routes to upload payment csv
+*/
+Route::get('/payment', function () {
+    return view('paymentupload');
+});
+Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
+Route::post('/import_process', 'ImportController@processImport')->name('import_process');;

@@ -135,6 +135,7 @@ password:this.password,
 remember:this.remember
 }).then(res=>
 {
+console.log(res)
 location.reload()
 }).catch(error=>{
 if(error.response.status==422)

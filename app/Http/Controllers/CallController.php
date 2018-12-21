@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Call;
+  use Illuminate\Support\Facades\Auth;
 
 class CallController extends Controller
 {
@@ -14,7 +15,8 @@ class CallController extends Controller
      */
     public function index()
     {
-        //
+      $user = Auth::user()->name;
+      print_r($user);
     }
 
     /**
@@ -24,8 +26,10 @@ class CallController extends Controller
      */
     public function create()
     {
-        //
-        echo "working";
+      //the $id should be updated to the debtors phone no
+       $id=session('d');
+        $call_history=Call::where('Debtor_id',$id)->get();
+        return view('Callhistory',['call_history'=>$call_history]);
     }
 
     /**
@@ -42,7 +46,9 @@ class CallController extends Controller
         'reason'=>$request->reason,
         'PTP_amount'=>$request->PTP_amount,
         'PTP_date'=>$request->PTP_date,
-        'Call_date'=>$request->Call_date
+        'Call_date'=>$request->Call_date,
+        'Debtor_id'=>session('d'),
+        'User' =>Auth::user()->name
 
     ]);
     }
@@ -55,7 +61,7 @@ class CallController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

@@ -22,10 +22,14 @@
    });
 });
 
+
       </script>
         <!-- Styles -->
         <style>
-  html, body {
+        table { border-collapse: collapse; }
+        tr { display: block; float: left; }
+        th, td { display: block; border: 1px solid black; }
+            html, body {
                 background-image:url('../app/images/lk.jpg');
                  background-size: 1600px 800px;
                 color: #636b6f;
@@ -778,6 +782,7 @@ header {
     width: 100%;
 }
 }
+
         </style>
         <meta name="csrf-token" content="{{csrf_token()}}">
   <script>window.Laravel={csrfToken:'{{csrf_token()}}'}</script>
@@ -800,6 +805,7 @@ header {
 
 
         @if(auth()->check())
+
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Welcome {{auth()->user()->name}}</strong>
                 <b class="caret"></b></a>
@@ -842,8 +848,8 @@ header {
                     </div>
                     <div class="navi">
                         <ul>
-                            <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                            <li><a href="{{url("debtor/debtors/create")}}"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
+                            <li ><a href="{{url("/")}}"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                            <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
                               <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agent Summary</span></a></li>
                             <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
                             <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendar</span></a></li>
@@ -866,14 +872,11 @@ header {
                                         </button>
                                     </div>
                                 </nav>
-                                <div class="search hidden-xs hidden-sm">
-                                  <input type="text" placeholder="Enter Debtors Number" id="search">
-                        </div>
+
                             </div>
                             <div class="col-md-5">
                                 <div class="header-rightside">
                                     <ul class="list-inline header-top pull-right">
-                                        <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Suggestion Box</a></li>
                                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                                         <li>
                                             <a href="#" class="icon-info">
@@ -882,111 +885,71 @@ header {
                                             </a>
                                         </li>
 
-                                    </ul>
                                 </div>
                             </div>
                         </header>
                     </div>
-                    <div class="user-dashboard>
-                        <div class="row">
-                          <div class="col-md-12 col-sm-12 col-xs-12 gutter">
-                              <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-bookmark"></span> Call dashboard</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Total Calls</a>
-                          <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Total Connected Calls</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Total Temporary Not Contacted</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Total PTPS</a>
-                        </div>
-                        <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
-                          <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Paid PTPS</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Unpaid Ptps</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>Tags</a>
-                        </div>
-                    </div>
-                    <a href="http://www.jquery2dotnet.com/" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span>Company Website</a>
-                </div>
-            </div>
-        </div>
+                    <div class="user-dashboard">
+                      <div class="panel panel-primary">
+                          <div class="panel-heading">
+                              <h3 class="panel-title">
+                                  <span class="glyphicon glyphicon-bookmark"></span>Payment upload</h3>
                           </div>
-                            <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                          <div class="panel-body">
+                            <div class="row">
+                              <div class="col-md-6 col-sm-12 col-xs-12 gutter">
+                                <form class="form-horizontal" method="POST" action="{{ route('import_parse') }}" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
 
-                                <div class="sales">
-                                    <h2>Collection</h2>
+                                            <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
+                                                <label for="csv_file" class="col-md-4 control-label">CSV file to import</label>
 
-                                    <div class="btn-group">
-                                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span>Period:</span> Last Year
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a href="#">2012</a>
-                                            <a href="#">2014</a>
-                                            <a href="#">2015</a>
-                                            <a href="#">2016</a>
-                                        </div>
+                                                <div class="col-md-6">
+                                                    <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+
+                                                    @if ($errors->has('csv_file'))
+                                                        <span class="help-block">
+                                                        <strong>{{ $errors->first('csv_file') }}</strong>
+                                                    </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-md-offset-4">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="header" checked> File contains header row?
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-8 col-md-offset-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        Parse CSV
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-7 col-sm-7 col-xs-12 gutter">
-
-                                <div class="sales report">
-                                    <h2>Report</h2>
-                                    <div class="btn-group">
-                                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span>Period:</span> Last Year
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a href="#">2012</a>
-                                            <a href="#">2014</a>
-                                            <a href="#">2015</a>
-                                            <a href="#">2016</a>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
+                                <br>
+                                <br>
+
+
+                          <div class="panel-footer">
+
                         </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
 
 
         <!-- Modal -->
-        <div id="add_project" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header login-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h4 class="modal-title">Whats on Your Mind</h4>
-                    </div>
-                    <div class="modal-body">
-                                <input type="text" placeholder="Suggestion Title" name="Title">
-                                <input type="text" placeholder="Agent" name="Agent">
-                                <textarea placeholder="Desicrption"></textarea>
-                        </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                        <button type="button" class="add-project" data-dismiss="modal">Save</button>
-                    </div>
-                </div>
 
             </div>
         </div>
-        @else
-        <strong>{{session('logout')}}</strong>
-
 
 
     @endif
@@ -996,9 +959,13 @@ header {
         <!-- Button trigger modal -->
 
 <vue-login></vue-login>
+<call></call>
 </div>
 
       <script src="{{asset('js/app.js') }}"></script>
+      <script>
+
+      </script>
 
     </body>
 </html>
