@@ -27,8 +27,8 @@ class CallController extends Controller
     public function create()
     {
       //the $id should be updated to the debtors phone no
-       $id=session('d');
-        $call_history=Call::where('Debtor_id',$id)->get();
+       $number=session('d');
+        $call_history=Call::where('Debtor_no',$number)->get();
         return view('Callhistory',['call_history'=>$call_history]);
     }
 
@@ -47,7 +47,7 @@ class CallController extends Controller
         'PTP_amount'=>$request->PTP_amount,
         'PTP_date'=>$request->PTP_date,
         'Call_date'=>$request->Call_date,
-        'Debtor_id'=>session('d'),
+        'Debtor_no'=>session('d'),
         'User' =>Auth::user()->name
 
     ]);

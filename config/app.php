@@ -211,7 +211,7 @@ return [
 
     ],
     'db_fields' => [
-    'debtor_id',
+    'debtor_no',
     'lastpaymentamount',
     'lastpaymentdate',
     'currentbalance'

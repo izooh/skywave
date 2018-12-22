@@ -47481,6 +47481,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         password: this.password,
         remember: this.remember
       }).then(function (res) {
+        console.log(res);
         location.reload();
       }).catch(function (error) {
         if (error.response.status == 422) {

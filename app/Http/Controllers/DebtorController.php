@@ -35,7 +35,19 @@ class DebtorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $number=$request->input('number');
+      //dd($number);
+      //retreiving debtors info while limiting payment to 2 records
+      $Debtor=Debtor::where('debtor_no',$number)->with([
+      'payment' => function($q) {
+      $q->take(2);
+      }
+      ])->get();
+
+session()->put('d',$number);
+
+return view('Debtorinfo',['Debtor'=>$Debtor]);
+       //return view('Debtorinfo',['Debtor'=>$Debtor]);
     }
 
     /**
@@ -47,16 +59,7 @@ class DebtorController extends Controller
     public function show($id)
     {
 
-      //retreiving debtors info while limiting payment to 2 records
-      $Debtor=Debtor::where('id',$id)->with([
-'payment' => function($q) {
-   $q->take(2);
- }
-])->get();
-session()->put('d',$id);
 
-return view('Debtorinfo',['Debtor'=>$Debtor]);
-       //return view('Debtorinfo',['Debtor'=>$Debtor]);
   }
 
     /**

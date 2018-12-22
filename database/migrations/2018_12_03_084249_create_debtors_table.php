@@ -17,7 +17,7 @@ class CreateDebtorsTable extends Migration
             $table->increments('id');
             $table->string('FullName');
             $table->integer('IdentityNo');
-            $table->integer('MobilePhone');
+            $table->integer('debtor_no');
             $table->string('Email');
             $table->integer('AccountNumber');
             $table->integer('default');

@@ -40,8 +40,6 @@ Route::prefix('calls')->group(function(){
 /*
 routes to upload payment csv
 */
-Route::get('/payment', function () {
-    return view('paymentupload');
-});
+Route::get('/payment', 'ImportController@getImport')->name('payment');
 Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/import_process', 'ImportController@processImport')->name('import_process');;

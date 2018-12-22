@@ -914,7 +914,7 @@ header {
                                           <tr>
                                               <td> {{$D->FullName}} </td>
                                               <td> {{$D->IdentityNo}} </td>
-                                              <td> {{$D->MobilePhone}} </td>
+                                              <td> {{$D->debtor_no}} </td>
                                               <td> {{$D->Email}} </td>
                                               <td> {{$D->default}} </td>
                                               <td> {{$D->OriginationDate}} </td>

@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
+
   protected $fillable = [
-      'Debtor_id', 'LastPaymentAmount', 'LastPaymentDate','currentBalance'
+      'Debtor_no', 'LastPaymentAmount', 'LastPaymentDate','currentBalance'
   ];
   //relation to Debtor Model
   public function debtor()

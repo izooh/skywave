@@ -12,7 +12,7 @@ class ImportController extends Controller
 {
   public function getImport()
     {
-        return view('import');
+        return view('paymentupload');
     }
 
     public function parseImport(CsvImportRequest $request)
@@ -66,7 +66,7 @@ class ImportController extends Controller
             $payment->save();
         }
 
-        return view('import_success');
+        return 'import_success';
     }
 
 }

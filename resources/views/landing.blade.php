@@ -843,11 +843,11 @@ header {
                     <div class="navi">
                         <ul>
                             <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                            <li><a href="{{url("debtor/debtors/create")}}"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
+                            <li><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Loan Info</span></a></li>
                               <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agent Summary</span></a></li>
                             <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
                             <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendar</span></a></li>
-                            <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
+                            <li><a href="{{url('/payment')}}"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -866,9 +866,12 @@ header {
                                         </button>
                                     </div>
                                 </nav>
+                                <form method="post" action="{{url('debtor/debtors')}}">
+                                  @csrf
                                 <div class="search hidden-xs hidden-sm">
-                                  <input type="text" placeholder="Enter Debtors Number" id="search">
+                                  <input type="text" placeholder="Enter Debtors Number" name="number" id="search">
                         </div>
+                      </form>
                             </div>
                             <div class="col-md-5">
                                 <div class="header-rightside">

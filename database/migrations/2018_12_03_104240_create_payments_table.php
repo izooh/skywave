@@ -15,7 +15,7 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('debtor_id');
+            $table->integer('debtor_no');
             $table->integer('lastpaymentamount');
             $table->date('lastpaymentdate');
             $table->integer('currentbalance');
