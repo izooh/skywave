@@ -55,15 +55,18 @@ class ImportController extends Controller
 
         $csv_data = json_decode($data->csv_data, true);
         foreach ($csv_data as $row) {
-            $payment = new Payment();
-            foreach (config('app.db_fields') as $index => $field) {
-                if ($data->csv_header) {
-                    $payment->$field = $row[$request->fields[$field]];
-                } else {
-                    $payment->$field = $row[$request->fields[$index]];
-                }
-            }
-            $payment->save();
+          $payment = new Payment();
+          foreach (config('app.db_fields') as $index => $field) {
+              if ($data->csv_header) {
+                  $payment->$field = $row[$request->fields[$field]];
+              } else {
+                  $payment->$field = $row[$request->fields[$index]];
+              }
+          }
+
+//converted to array so that i can call updateOrCreate()
+  $pays=$payment->toArray();
+  Payment::updateOrCreate($pays);
         }
 
         return 'import_success';

@@ -48348,14 +48348,18 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", [
                     _vm._v(
-                      "selected: " +
+                      "selected item: " +
                         _vm._s(_vm.Contact_Type) +
                         " ," +
                         _vm._s(_vm.Contact_Status) +
                         " ," +
                         _vm._s(_vm.reason) +
-                        " ," +
-                        _vm._s(_vm.PTP_amount)
+                        "," +
+                        _vm._s(_vm.PTP_amount) +
+                        "," +
+                        _vm._s(_vm.PTP_date) +
+                        "," +
+                        _vm._s(_vm.Call_date)
                     )
                   ]),
                   _c("br"),

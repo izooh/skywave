@@ -25,11 +25,8 @@ Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('admin')->prefix('admin')->group(function(){
-  Route::resource('series','SeriesController');
-});
 Route::prefix('debtor')->group(function(){
   Route::resource('debtors','DebtorController');
 });
@@ -40,6 +37,8 @@ Route::prefix('calls')->group(function(){
 /*
 routes to upload payment csv
 */
+Route::middleware('admin')->prefix('payments')->group(function(){
 Route::get('/payment', 'ImportController@getImport')->name('payment');
 Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
-Route::post('/import_process', 'ImportController@processImport')->name('import_process');;
+Route::post('/import_process', 'ImportController@processImport')->name('import_process');
+});

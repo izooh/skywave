@@ -847,7 +847,7 @@ header {
                               <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Agent Summary</span></a></li>
                             <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Statistics</span></a></li>
                             <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calendar</span></a></li>
-                            <li><a href="{{url('/payment')}}"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
+                            <li><a href="{{url('/payments/payment')}}"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -976,12 +976,12 @@ header {
                     </div>
                     <div class="modal-body">
                                 <input type="text" placeholder="Suggestion Title" name="Title">
-                                <input type="text" placeholder="Agent" name="Agent">
+                                
                                 <textarea placeholder="Desicrption"></textarea>
                         </div>
                     <div class="modal-footer">
                         <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                        <button type="button" class="add-project" data-dismiss="modal">Save</button>
+                        <button type="button" class="add-project" data-dismiss="modal">Send</button>
                     </div>
                 </div>
 

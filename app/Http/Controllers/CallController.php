@@ -26,7 +26,7 @@ class CallController extends Controller
      */
     public function create()
     {
-      //the $id should be updated to the debtors phone no
+      //$number is from debtor controller
        $number=session('d');
         $call_history=Call::where('Debtor_no',$number)->get();
         return view('Callhistory',['call_history'=>$call_history]);
