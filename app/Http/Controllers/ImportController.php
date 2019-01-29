@@ -67,9 +67,11 @@ class ImportController extends Controller
 //converted to array so that i can call updateOrCreate()
   $pays=$payment->toArray();
   Payment::updateOrCreate($pays);
+  session()->flash('mes','Payment succesfully uploaded');
+return view('paymentupload');
         }
 
-        return 'import_success';
+  // //return 'upload succesfully';
     }
 
 }

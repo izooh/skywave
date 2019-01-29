@@ -942,7 +942,8 @@ header {
 
                           <div class="panel-footer">
 
-                        </div>
+            {{ session('mes') }}
+                  </div>
 
 
 
