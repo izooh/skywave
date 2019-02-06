@@ -26,7 +26,9 @@
       </script>
         <!-- Styles -->
         <style>
-
+        table { border-collapse: collapse; }
+        tr { display: block; float: left; }
+        th, td { display: block; border: 1px solid black; }
             html, body {
                 background-image:url('../app/images/lk.jpg');
                  background-size: 1600px 800px;
@@ -891,53 +893,46 @@ header {
                       <div class="panel panel-primary">
                           <div class="panel-heading">
                               <h3 class="panel-title">
-                                  <span class="glyphicon glyphicon-bookmark"></span>Payment upload</h3>
+                                  <span class="glyphicon glyphicon-bookmark"></span>Debtor upload</h3>
                           </div>
                           <div class="panel-body">
                             <div class="row">
                               <div class="col-md-6 col-sm-12 col-xs-12 gutter">
-                                <form class="form-horizontal" method="POST" action="{{ route('import_process') }}">
-{{ csrf_field() }}
-<input type="hidden" name="csv_data_file_id" value="{{ $csv_data_file->id }}" />
+                                <form class="form-horizontal" method="POST" action="{{route('debtor_parse')}}" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
 
-<table class="table">
-@if (isset($csv_header_fields))
-<tr>
-@foreach ($csv_header_fields as $csv_header_field)
-    <th>{{ $csv_header_field }}</th>
-@endforeach
-</tr>
-@endif
-@foreach ($csv_data as $row)
-<tr>
-@foreach ($row as $key => $value)
-    <td>{{ $value }}</td>
-@endforeach
-</tr>
-@endforeach
-<tr>
-@foreach ($csv_data[0] as $key => $value)
-    <td>
-        <select name="fields[{{ $key }}]">
-            @foreach (config('app.db_fields') as $db_field)
-                <option value="{{ (\Request::has('header')) ? $db_field : $loop->index }}"
-                    @if ($key === $db_field) selected @endif>{{ $db_field }}</option>
-            @endforeach
-        </select>
-    </td>
-@endforeach
-</tr>
-</table>
+                                            <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
+                                                <label for="csv_file" class="col-md-4 control-label">CSV file to import</label>
 
-<button type="submit" class="btn btn-primary">
-Import Data
-</button>
-</form>
+                                                <div class="col-md-6">
+                                                    <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+
+                                                    @if ($errors->has('csv_file'))
+                                                        <span class="help-block">
+                                                        <strong>{{ $errors->first('csv_file') }}</strong>
+                                                    </span>
+                                                    @endif
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-md-offset-4">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="header" checked> File contains header row?
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-8 col-md-offset-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        Parse CSV
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 </div>
@@ -947,8 +942,8 @@ Import Data
 
                           <div class="panel-footer">
 
-                        </div>
-
+            {{ session('mes') }}
+                  </div>
 
 
 

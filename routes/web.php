@@ -41,4 +41,11 @@ Route::middleware('admin')->prefix('payments')->group(function(){
 Route::get('/payment', 'ImportController@getImport')->name('payment');
 Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/import_process', 'ImportController@processImport')->name('import_process');
+
+/*routes to upload debtors Info
+*/
+Route::get('/debtor_info','debtorImportController@getImport')->name('debtorinfo');
+Route::post('/debtor_parse', 'debtorImportController@parseImport')->name('debtor_parse');
+Route::post('/debtor_import_process', 'debtorImportController@processImport')->name('debtor_import_process');
+
 });

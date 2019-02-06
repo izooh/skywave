@@ -944,6 +944,7 @@ header {
 
             {{ session('mes') }}
                   </div>
+                  <p><a href="{{route('debtorinfo')}}">click to upload debtor information</a></p>
 
 
 
