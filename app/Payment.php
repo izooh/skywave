@@ -8,7 +8,7 @@ class Payment extends Model
 {
 
   protected $fillable = [
-      'Debtor_no', 'LastPaymentAmount', 'LastPaymentDate','currentBalance'
+      'debtor_no', 'lastpaymentamount', 'lastpaymentdate','currentbalance'
   ];
   //relation to Debtor Model
   public function debtor()

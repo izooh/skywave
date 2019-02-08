@@ -35,19 +35,20 @@ class DebtorController extends Controller
      */
     public function store(Request $request)
     {
+      //searching the debtor model using the phone_no
       $number=$request->input('number');
-      //dd($number);
       //retreiving debtors info while limiting payment to 2 records
       $Debtor=Debtor::where('debtor_no',$number)->with([
       'payment' => function($q) {
       $q->take(2);
       }
       ])->get();
+      //session to save  the debtor number in the call controller
 
 session()->put('d',$number);
 
 return view('Debtorinfo',['Debtor'=>$Debtor]);
-       //return view('Debtorinfo',['Debtor'=>$Debtor]);
+
     }
 
     /**

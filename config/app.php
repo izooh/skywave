@@ -216,5 +216,18 @@ return [
     'lastpaymentdate',
     'currentbalance'
 ],
+'debtor_fields'=>['fullname',
+'identityno',
+'debtor_no'	,
+'email',
+'accountnumber',
+'default',
+'interestrate',
+'originationdate',
+'duedate',
+'handoverdate',
+'handoveramount',
+'latefee',
+'client']
 
 ];

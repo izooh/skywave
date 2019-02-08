@@ -55,7 +55,7 @@
 </div>
 
 
-    <span>selected: {{Contact_Type}} ,{{Contact_Status}} ,{{reason}} ,{{PTP_amount}}</span><br><hr>
+    <span>selected item: {{Contact_Type}} ,{{Contact_Status}} ,{{reason}},{{PTP_amount}},{{PTP_date}},{{Call_date}}</span><br><hr>
     <button type="submit"  class="btn btn-primary"><i class="fa fa-paper-plane"></i> Update</button>
     </form>
 
